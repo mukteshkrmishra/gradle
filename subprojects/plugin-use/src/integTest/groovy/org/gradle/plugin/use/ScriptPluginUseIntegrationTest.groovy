@@ -310,6 +310,33 @@ class ScriptPluginUseIntegrationTest extends AbstractIntegrationSpec {
         operations.hasOperation("Apply script plugin 'gradle/other.gradle' to root project 'root'")
     }
 
+    def "script plugin can request built-in plugins"() {
+
+        given:
+        file("other.gradle") << """
+
+            plugins {
+                id("java")
+            }
+            
+        """.stripIndent()
+
+        and:
+        buildFile << """
+
+            plugins {
+                script("other.gradle")
+            }
+            
+        """.stripIndent()
+
+        when:
+        succeeds "help"
+
+        then:
+        operations.hasOperation("Apply plugin 'org.gradle.java' to root project 'root'")
+    }
+
     def "plugin resolution strategy see all about script plugin requests"() {
 
         given:
