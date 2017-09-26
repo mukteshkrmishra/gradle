@@ -49,7 +49,7 @@ abstract class AbstractNativeLanguageIncrementalBuildIntegrationTest extends Abs
         return !(toolChain instanceof AvailableToolChains.InstalledWindowsGcc)
     }
 
-    abstract IncrementalHelloWorldApp getHelloWorldApp();
+    abstract IncrementalHelloWorldApp getHelloWorldApp()
 
     String getCompilerTool() {
         "${app.sourceType}Compiler"
@@ -164,7 +164,7 @@ abstract class AbstractNativeLanguageIncrementalBuildIntegrationTest extends Abs
 
         when:
         for (int i = 0; i < librarySourceFiles.size(); i++) {
-            TestFile sourceFile = librarySourceFiles.get(i);
+            TestFile sourceFile = librarySourceFiles.get(i)
             sourceFile.text = app.alternateLibrarySources[i].content
         }
 
@@ -353,7 +353,7 @@ abstract class AbstractNativeLanguageIncrementalBuildIntegrationTest extends Abs
         def snapshot = executable.snapshot()
 
         and:
-        def linkerArgs = toolChain.isVisualCpp() ? "'/DEBUG'" : OperatingSystem.current().isMacOsX() ? "'-Xlinker', '-no_pie'" : "'-Xlinker', '-q'";
+        def linkerArgs = toolChain.isVisualCpp() ? "'/DEBUG'" : OperatingSystem.current().isMacOsX() ? "'-Xlinker', '-no_pie'" : "'-Xlinker', '-q'"
         linkerArgs = escapeString(linkerArgs)
         buildFile << """
         model {

@@ -32,7 +32,7 @@ class CppHelloWorldApp extends IncrementalHelloWorldApp {
               std::cout << sum(5, 7);
               return 0;
             }
-        """);
+        """)
     }
 
     SourceFile getAlternateMainSource() {
@@ -75,7 +75,7 @@ class CppHelloWorldApp extends IncrementalHelloWorldApp {
             #endif
 
             #endif
-        """);
+        """)
     }
 
     @Override
@@ -165,7 +165,7 @@ int main(int argc, char **argv) {
             ]
             List<SourceFile> headerFiles = [
             ]
-        };
+        }
     }
 
     public SourceFile getBrokenFile() {
